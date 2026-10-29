@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probe – Sign in</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="login">
+  <div class="hero">
+    <div class="brand" style="color:#dff5ee"><i></i>Probe</div>
+    <div>
+      <h1>Test any API without writing a test script.</h1>
+      <p>Build requests, add checks with dropdowns, and mock endpoints that aren't ready yet.</p>
+    </div>
+    <div class="trace mono">
+      <div>GET /api/users <span class="g">200 · 142 ms</span></div>
+      <div>✓ Status equals 200</div>
+      <div>✓ Body contains "Asha"</div>
+      <div>POST /api/login <span class="r">401 · 88 ms</span></div>
+    </div>
+  </div>
+
+  <div class="formside">
+    <div class="card">
+      <h2 id="ltitle">Sign in</h2>
+      <div class="muted">Use any email and a password of 4+ characters.</div>
+
+      <label for="em">Email</label>
+      <input id="em" type="email"
+             placeholder="you@company.com"
+             autocomplete="username">
+
+      <label for="pw">Password</label>
+      <input id="pw" type="password"
+             autocomplete="current-password">
+
+      <div class="err" id="lerr"></div>
+
+      <button class="pri" id="lbtn"
+              style="width:100%;margin-top:6px">
+        Sign in
+      </button>
+
+      <p class="muted" style="margin:14px 0 0">
+        <a href="#" id="toggle" style="color:var(--acc)">
+          Create an account instead
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probe – No-Code API Testing Suite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="app">
+  <aside>
+    <div class="brand"><i></i>Probe</div>
+    <button class="nav on" data-v="tester">Request tester</button>
+    <button class="nav" data-v="mocks">Mock responses</button>
+    <button class="nav" data-v="history">History</button>
+    <div class="user">
+      <div id="uemail"></div>
+      <button class="ghost" id="logout" style="padding:4px 0">Sign out</button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="stats">
+      <div class="stat"><b id="sReq">0</b><span>Requests sent</span></div>
+      <div class="stat"><b id="sPass">–</b><span>Checks passing</span></div>
+      <div class="stat"><b id="sAvg">–</b><span>Avg response</span></div>
+      <div class="stat"><b id="sMock">0</b><span>Active mocks</span></div>
+    </div>
+
+    <!-- Request tester -->
+    <div id="v-tester">
+      <div class="bar">
+        <select id="method">
+          <option>GET</option>
+          <option>POST</option>
+          <option>PUT</option>
+          <option>PATCH</option>
+          <option>DELETE</option>
+        </select>
+        <input id="url" class="mono"
+          value="https://mock.probe/api/users"
+          aria-label="Request URL">
+        <button class="pri" id="send">Send</button>
+      </div>
+
+      <div class="cols">
+        <div class="box">
+          <div class="tabs" id="rtabs">
+            <button class="on" data-t="params">Params</button>
+            <button data-t="headers">Headers</button>
+            <button data-t="body">Body</button>
+            <button data-t="tests">Checks</button>
+          </div>
+
+          <div id="t-params"></div>
+          <div id="t-headers" class="hidden"></div>
+          <div id="t-body" class="hidden">
+            <textarea id="body" class="mono" rows="9"
+              placeholder='{"name":"Asha"}'></textarea>
+          </div>
+          <div id="t-tests" class="hidden"></div>
+
+          <button id="saveReq" style="margin-top:10px">
+            Save to history
+          </button>
+        </div>
+
+        <div class="box">
+          <div class="res" id="resMeta">
+            <span>Send a request to see the response.</span>
+          </div>
+          <pre id="resBody" class="mono"></pre>
+          <div id="resTests" style="margin-top:10px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mock responses -->
+    <div id="v-mocks" class="hidden">
+      <div class="cols">
+        <div class="box">
+          <h3 style="margin-top:0">Mock endpoints</h3>
+          <div class="muted" style="margin-bottom:8px">
+            Requests to https://mock.probe + path return these responses.
+          </div>
+          <div class="list" id="mockList"></div>
+        </div>
+
+        <div class="box">
+          <h3 style="margin-top:0" id="mTitle">New mock</h3>
+
+          <div class="kv" style="grid-template-columns:110px 1fr">
+            <select id="mMethod">
+              <option>GET</option>
+              <option>POST</option>
+              <option>PUT</option>
+              <option>PATCH</option>
+              <option>DELETE</option>
+            </select>
+            <input id="mPath" class="mono" placeholder="/api/orders">
+          </div>
+
+          <div class="kv" style="grid-template-columns:1fr 1fr">
+            <div>
+              <label class="muted" for="mStatus">Status code</label>
+              <input id="mStatus" type="number" value="200">
+            </div>
+            <div>
+              <label class="muted" for="mDelay">Delay (ms)</label>
+              <input id="mDelay" type="number" value="0">
+            </div>
+          </div>
+
+          <label class="muted" for="mBody">Response body (JSON)</label>
+          <textarea id="mBody" class="mono" rows="9">{"ok":true}</textarea>
+
+          <div class="err" id="mErr"></div>
+          <button class="pri" id="mSave">Save mock</button>
+          <button id="mReset">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div id="v-history" class="hidden">
+      <div class="box">
+        <div class="list" id="histList"></div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
