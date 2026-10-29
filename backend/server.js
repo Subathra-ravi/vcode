@@ -9,14 +9,6 @@ const frontendPath = path.join(__dirname, "../frontend");
 
 app.use(express.static(frontendPath));
 
-app.get("/login.js", (req, res) => {
-    res.sendFile(path.join(__dirname, "login.js"));
-});
-
-app.get("/dashboard.js", (req, res) => {
-    res.sendFile(path.join(__dirname, "dash.js"));
-});
-
 app.get("/", (req, res) => {
     res.sendFile(path.join(frontendPath, "login.html"));
 });
